@@ -1,0 +1,7 @@
+@conference{Bachmann2009iccv, 
+   author = {A. Bachmann, H. Kuehne}, 
+   title = {An Iterative Scheme for Motion-Based Scene Segmentation}, 
+   year = {2009}, 
+   booktitle = {ICCV 2009, Workshop on Dynamical Vision (DV)}, 
+   address = {Kyoto, Japan}, 
+ } 

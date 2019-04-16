@@ -1,0 +1,7 @@
+@conference{Gehrig2008humanoids, 
+   author = {D. Gehrig, A. Fischer, H. Kuehne, T. Stein, A. Woerner, H. Schwameder and T. Schultz}, 
+   title = {Online Recognition of Daily-Life Movements}, 
+   year = {2008}, 
+   booktitle = {IEEE-RAS International Conference on Humanoid Robots (Humanoids 2008). Workshop Imitation and Coaching in Humanoid Robots}, 
+   address = {Daejeon, Korea}, 
+ }  

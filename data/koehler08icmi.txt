@@ -1,0 +1,8 @@
+@conference{Koehler2008ICMI, 
+   author = {H. Koehler, A. Woerner.}, 
+   title = {Motion-based Feature Tracking For Articulated Motion Analysis}, 
+   year = {2008}, 
+   booktitle = {IEEE Int. Conf. on Multimodal Interfaces (ICMI 2008), Workshop on Multimodal Interactions Analysis of Users a Controlled Environment.}, 
+   address = {Chania, Greece.}, 
+ } 
+ 

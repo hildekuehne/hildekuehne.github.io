@@ -1,0 +1,62 @@
+body { 
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-style: normal;
+	color: #333333;
+	list-style-type: circle;
+	font-size: small;
+	letter-spacing: normal;
+	text-align: left;
+	word-spacing: normal;
+	white-space: normal;
+	margin: 50px;
+	padding: 50px;
+}
+h1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: medium;
+}
+table {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+	margin: 3px;
+	padding: 3px;
+	border: none;
+	clear: both;
+	float: left;
+	width: 610;
+}
+p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+}
+ul {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+}
+
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+}
+
+/* http://www.quackit.com/css/codes/css_floating_menu.cfm */
+.floating-menu {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+background: white;
+background-image: url("bg_menu.png");
+background-size: 100% 100%;
+padding: 5px;;
+width: 130px;
+z-index: 100;
+position: fixed;
+right: 5%;
+}
+
+.floating-menu a, 
+.floating-menu h3 {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 0.9em;
+display: block;
+margin: 0 0.5em;
+color: black;
+}

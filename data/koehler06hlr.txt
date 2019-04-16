@@ -1,0 +1,7 @@
+@inproceedings{Boesnach2006hlr, 
+   author = {I. Boesnach, H. Koehler, D. Gehrig, G. Stelzner, C. Simonidis, A. Fischer, T. Stein.}, 
+   title = {A large-scale database of human movements to humanize robot motion}, 
+   year = {2006}, 
+   booktitle = {HLR, French-German Workshop on Humanoid and Legged Robots}, 
+   address = {Karlsruhe, Germany}, 
+ } 

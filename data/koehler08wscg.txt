@@ -1,0 +1,7 @@
+@inproceedings{Koehler2008AHM, 
+   author = {Koehler, Hildegard and Pruzinec, Martin and Feldmann, Tobias and Woerner, Annika}, 
+   title = {Automatic Human Model Parametrization From 3D Marker Data For Motion Recognition}, 
+   year = {2008}, 
+   booktitle = {WSCG'2008 - 16th International Conference in Central Europe on Computer Graphics, Visualization and Computer Vision}, 
+   address = {Pilsen}, 
+ } 

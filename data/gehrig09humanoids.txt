@@ -1,0 +1,11 @@
+@INPROCEEDINGS{5379546, 
+ author={Gehrig, D. and Kuehne, H. and Woerner, A. and Schultz, T.}, 
+ booktitle={Humanoid Robots, 2009. Humanoids 2009. 9th IEEE-RAS International Conference on}, title={HMM-based human motion recognition with optical flow data}, 
+ year={2009}, 
+ month={dec.}, 
+ volume={}, 
+ number={}, 
+ pages={425 -430}, 
+ keywords={HMM;HMM-based human motion recognition;complex motion sequences;hidden Markov models;high-level hierarchy;marker-based features;optical flow data;optical flow gradient histograms;pose estimation;recognition process;rule-based formulation;feature extraction;hidden Markov models;image sequences;motion estimation;robot vision;statistical analysis;}, 
+ doi={10.1109ICHR.2009.5379546}, 
+ ISSN={},}

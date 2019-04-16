@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="generator" content="Adobe GoLive" />
+		<title>Hilde Kuehne - Computer Vision Group - Universtiy of Bonn</title>
+		<link href="../../css/basic.css" rel="stylesheet" type="text/css" media="all" />
+		
+		<script>
+		
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		  ga('create', 'UA-101254080-1', 'auto');
+		  ga('send', 'pageview');
+		
+		</script>
+
+	</head>
+
+	<body>
+	
+
+<nav class="floating-menu">
+<p>&nbsp;</p>
+<a href="http://pages.iai.uni-bonn.de/kuehne_hilde/">Home</a><br>
+<a href="http://pages.iai.uni-bonn.de/kuehne_hilde/index.html#projects">Projects</a><br>
+<a href="http://pages.iai.uni-bonn.de/kuehne_hilde/index.html#publications">Publications</a><br>
+<a href="http://pages.iai.uni-bonn.de/kuehne_hilde/index.html#cv">CV</a><br>
+<br>
+</nav>
+	
+
+		<table width="692" border="0" align="left" cellpadding="10" cellspacing="5" bgcolor="#FFFFFF">
+			<tr>
+				<td valign="top">
+					<div align="center">
+						<h1><strong>An end-to-end generative framework for video segmentation and recognition</strong></h1>
+						<p>H. Kuehne, J. Gall and T. Serre</p>
+						<p>Proc. of IEEE Winter Conference on Applications of Computer Vision (WACV), 2016</p>
+						<br />
+						<p><img src="../../img/WACV-0.gif" livesrc="../../img/WACV-0.png" alt="" height="150" border="0" /></p>
+						<p><a href="http://pages.iai.uni-bonn.de/kuehne_hilde/projects/end2end/kuehne_wacv16.pdf">.pdf</a> | <a href="http://pages.iai.uni-bonn.de/kuehne_hilde/projects/end2end/kuehne_wacv16.pdf">.bibtext</a></p>
+						<p></p>
+					</div>
+					<h3>Abstract</h3>
+					<p></p>
+					<p> We describe an end-to-end generative approach for the segmentation and recognition of human activities. In this approach, a visual representation based on reduced Fisher Vectors is combined with a structured temporal model for recognition. We show that the statistical properties of Fisher Vectors make them an especially suitable front-end for generative models such as Gaussian mixtures. The system is evaluated for both the recognition of complex activities as well as their parsing into action units. Using a variety of video datasets ranging from human cooking activities to animal behaviors, our experiments demonstrate that the resulting architecture outperforms state-of-the-art approaches for larger datasets, i.e. when sufficient amount of data is available for training structured generative models.</p>
+						<p></p>
+						<p></p>
+						
+							<h3>Code</h3>
+							<p></p>
+							<p>Current version of the system is available on GitHub: <a href="https://github.com/hildekuehne/HTK_actionRecognition">https://github.com/hildekuehne/HTK_actionRecognition</a></p>
+							<p></p>
+					<p>If you use this code and/or data in your project, please cite:</p>
+					<pre><code>@InProceedings{Kuehne16end,
+author = {Hilde Kuehne and Juergen Gall and Thomas Serre},
+title = {An end-to-end generative framework for video segmentation and recognition},
+booktitle = {Proc. IEEE Winter Applications of Computer Vision Conference (WACV 16)},
+year = {2016},
+month = {Mar},
+address = {Lake Placid},
+}
+</code></pre>
+					<p></p>
+					<p></p>
+					<h3>Data</h3>
+					<p></p>
+						<p>The evaluation was done on the following datasets: ADL, Olympic, ToyAssembly, CMU-MMAC, MPIICooking, 50Salads, Breakfast and CRIM13. We provide the reduced FV representation and the segmentation used (.xml and .txt). We also provide precomputed dense trajectories (<a href="https://lear.inrialpes.fr/people/wang/dense_trajectories">using the code availlable here</a>) or improved dense trajectories (<a href="https://lear.inrialpes.fr/people/wang/improved_trajectories">using the code availlable here</a>) on request, as long as they are not included at the dataset website. Please contact me (kuehne @ iai . uni-bonn . de) .</p>
+						<p></p>
+						<h4>ADL</h4>
+						<p>Website: <a href="http://www.cs.rochester.edu/u/rmessing/uradl/">http://www.cs.rochester.edu/u/rmessing/uradl/</a></p>
+						<p>Reduced FV: <a href="https://uni-bonn.sciebo.de/index.php/s/8cJpknhdyVArZxB">hist_dt_l2pn_c64.rar</a></p>
+						<p>Segmentation: <a href="https://uni-bonn.sciebo.de/index.php/s/wX4Iw22FBRbHlCm">segmentation.tar.gz</a></p>
+						<p>Dense Trajectories: on request </p>
+						<p></p>
+						<h4>Olympic</h4>
+						<div align="left">
+							<p>Website: <a href="http://vision.stanford.edu/Datasets/OlympicSports/">http://vision.stanford.edu/Datasets/OlympicSports/</a></p>
+							<p>Reduced FV: <a href="https://uni-bonn.sciebo.de/index.php/s/W8Z5rljROMeoPwP">dt_l2pn_c64_pc64.tar.gz</a></p>
+							<p>Segmentation: <a href="https://uni-bonn.sciebo.de/index.php/s/sJHj1sXDzOxkvEw">segmentation.tar.gz</a></p>
+							<p>Improved dense Trajectories: on request</p>
+							<p></p>
+						</div>
+						<h4>ToyAssembly</h4>
+						<div align="left">
+							<p>Website: <a href="http://www.cc.gatech.edu/~nvo9/sin/">http://www.cc.gatech.edu/~nvo9/sin/</a></p>
+							<p>Reduced FV: <a href="https://uni-bonn.sciebo.de/index.php/s/WzgAbwbGK3rIevg">dt_l2pn_c64_pc64.rar</a></p>
+							<p>Segmentation: <a href="https://uni-bonn.sciebo.de/index.php/s/1zVTB6uo5Y67u3M">segmentation.tar.gz</a></p>
+							<p>Dense Trajectories: on request</p>
+							<p></p>
+						</div>
+						<h4>CMU-MMAC</h4>
+						<div align="left">
+							<p>Website: <a href="http://kitchen.cs.cmu.edu">http://kitchen.cs.cmu.edu</a></p>
+							<p>Reduced FV: <a href="https://uni-bonn.sciebo.de/index.php/s/D8MgzJmDdEEbk46">dt_l2pn_c64_pc64.rar</a></p>
+							<p>Segmentation: <a href="https://uni-bonn.sciebo.de/index.php/s/PCUIRxP5fpHXp3u">segmenatation.tar.gz</a></p>
+							<p>Dense Trajectories: on request</p>
+							<p></p>
+						</div>
+						<h4>MPIICooking</h4>
+						<div align="left">
+							<p>Website: <a href="https://www.mpi-inf.mpg.de/de/departments/computer-vision-and-multimodal-computing/research/human-activity-recognition/mpii-cooking-activities-dataset/">Link</a></p>
+							<p>Reduced FV: <a href="https://uni-bonn.sciebo.de/index.php/s/JL7SpVqqY5mJw5n">hist_dt_l2pn_c64.rar</a></p>
+							<p>Segmentation: <a href="https://uni-bonn.sciebo.de/index.php/s/xbonxlH6lkXP1Ey">segmentation.tar.gz</a>  |  <a href="https://uni-bonn.sciebo.de/index.php/s/eEUXjKdMBaVe4lm">segmentation.noBG.tar.gz</a></p>
+							<p>Dense Trajectories: <a href="https://www.mpi-inf.mpg.de/de/departments/computer-vision-and-multimodal-computing/research/human-activity-recognition/mpii-cooking-activities-dataset/">Link</a></p>
+						</div>
+						<h4></h4>
+						<h4>50Salads</h4>
+						<div align="left">
+							<p>Website: <a href="http://cvip.computing.dundee.ac.uk/datasets/foodpreparation/50salads/">http://cvip.computing.dundee.ac.uk/datasets/foodpreparation/50salads/</a></p>
+							<p>Reduced FV: <a href="https://uni-bonn.sciebo.de/index.php/s/7VpuuLF6BWEXyOZ">dt_l2pn_c64_pc64.rar</a></p>
+							<p>Segmentation: <a href="https://uni-bonn.sciebo.de/index.php/s/BOFYxaaNGhT997C">segmentation.tar.gz</a></p>
+						<p>For evaluation units are mapped to 13 classes.</p>
+						<p>Mapping file is here: <a href="https://uni-bonn.sciebo.de/index.php/s/XPQjJ8gpXKb0xKt">50salads_mapping_13classes.txt</a> , <a href="https://uni-bonn.sciebo.de/index.php/s/Z77MOtwHvNtBVCN">50salads_class_list.txt</a></p>
+						<p>Dense Trajectories: on request</p>
+							<p></p>
+						</div>
+						<h4>Breakfast</h4>
+						<div align="left">
+							<p>Website: <a href="http://serre-lab.clps.brown.edu/resource/breakfast-actions-dataset/">http://serre-lab.clps.brown.edu/resource/breakfast-actions-dataset/</a></p>
+							<p>Reduced FV: <a href="https://uni-bonn.sciebo.de/index.php/s/lqj3GNVQWXaX1WC">breakfast_data.tar.gz</a> (~1GB)</p>
+							<p>Segmentation: <a href="https://uni-bonn.sciebo.de/index.php/s/NsYSceejoCmrlTL">segmentation_coarse.tar.gz</a></p>
+							<p>Dense Trajectories:  </p>
+						<p>Splitted in four: <a href="https://www.dropbox.com/s/mfz8pe7jerlj54g/dense_traj_all_s1.tar.gz">dense_traj_all_s1.tar.gz</a> (~37GB) <a href="https://www.dropbox.com/s/l25u0jbmi62jwjp/dense_traj_all_s2.tar.gz">dense_traj_all_s2.tar.gz</a> (~57GB) <a href="https://www.dropbox.com/s/0j7enp6cjq2r8jd/dense_traj_all_s3.tar.gz">dense_traj_all_s3.tar.gz</a> (~42GB) <a href="https://www.dropbox.com/s/0ynhovye29ygha7/dense_traj_all_s4.tar.gz">dense_traj_all_s4.tar.gz</a> (~75GB)</p>
+						<p></p>
+					</div>
+						<h4>CRIM13</h4>
+						<div align="left">
+							<p>Website: <a href="http://www.vision.caltech.edu/Video_Datasets/CRIM13/CRIM13/Main.html">http://www.vision.caltech.edu/Video_Datasets/CRIM13/CRIM13/Main.html</a></p>
+							<p>Reduced FV: <a href="https://uni-bonn.sciebo.de/index.php/s/6joMd11BW3KVtkD">dt_l2pn_c64_pc64.rar</a></p>
+							<p>Segmentation: <a href="https://uni-bonn.sciebo.de/index.php/s/Q5o6PXMWvWRw4ye">segmentation.tar.gz</a></p>
+							<p>Dense Trajectories: on request</p>
+							<p></p>
+						</div>
+						<p></p>
+
+					<p align="center"><a href="https://pages.iai.uni-bonn.de/gall_juergen/"><img src="../../img/footer.gif" livesrc="../../img/footer.png" alt="" width="600" border="0" /></a></p>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

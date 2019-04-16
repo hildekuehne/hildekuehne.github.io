@@ -1,0 +1,7 @@
+@conference{DO2008humanoids, 
+   author = {M. Do, D. Gehrig, H. Kuehne, P. Azad, P. Pastor, T. Asfour, T. Schultz, A. Woerner, R. Dillmann}, 
+   title = {Transfer of Human Movements to Humanoid Robots}, 
+   year = {2008}, 
+   booktitle = {IEEE-RAS International Conference on Humanoid Robots (Humanoids 2008). Workshop Imitation and Coaching in Humanoid Robots}, 
+   address = {Daejeon, Korea}, 
+ } 

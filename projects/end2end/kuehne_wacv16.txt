@@ -1,0 +1,8 @@
+@InProceedings{Kuehne16end,
+author = {Hilde Kuehne and Juergen Gall and Thomas Serre},
+title = {An end-to-end generative framework for video segmentation and recognition},
+booktitle = {Proc. IEEE Winter Applications of Computer Vision Conference (WACV 16)},
+year = {2016},
+month = {Mar},
+address = {Lake Placid},
+}

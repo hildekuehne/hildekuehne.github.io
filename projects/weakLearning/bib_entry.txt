@@ -1,0 +1,8 @@
+@article{Kuehne16weak,
+author = {Hilde Kuehne and Alexander Richard and Juergen Gall},
+title = {Weakly supervised learning of actions from transcripts},
+journal = {CoRR},
+year = {2016},
+month = {Oct},
+}
+

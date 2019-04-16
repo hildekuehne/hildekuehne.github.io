@@ -1,0 +1,7 @@
+@inproceedings{Stein2007sport, 
+   author = {T. Stein, A. Fischer, I. Boesnach, D. Gehrig, H. Köhler, H. Schwameder}, 
+   title = {Kinematische Analyse menschlicher Alltagsbewegungen für die Mensch-Maschine-Interaktion}, 
+   year = {2007}, 
+   booktitle = {J. Edelmann-Nusser, K. Witte & E.F. Moritz (Hrsg.), Sporttechnologie zwischen Theorie und Praxis: V}, 
+   address = {Aachen, Shaker}, 
+ } 

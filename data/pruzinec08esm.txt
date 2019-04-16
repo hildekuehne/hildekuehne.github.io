@@ -1,0 +1,7 @@
+@conference{Pruzinec2008ESM, 
+   author = {M. Pruzinec, H. Koehler, A. Woerner}, 
+   title = {Localisation of Joint Rotation Centres for 3D Human Motion Simulation}, 
+   year = {2008}, 
+   booktitle = {22nd annual European Simulation and Modelling Conference}, 
+   address = {LeHavre, France}, 
+ } 

@@ -1,0 +1,12 @@
+@inproceedings{Koehler2004EAA, 
+   crossref = {proceedings2004POS}, 
+   author = {Koehler, Hildegard and Couprie, M. and Bouattour, Sahla and Paulus, Dietrich}, 
+   title = {Extraction and Analysis of Coronary-tree from single X-ray Angiographies}, 
+   year = {2004}, 
+   booktitle = {proc. of SPIE International Symposium Medical Imaging}, 
+   pages = {810--819}, 
+ } 
+@proceedings{proceedings2004POS, 
+   title = {proc. of SPIE International Symposium Medical Imaging}, 
+   year = {2004}, 
+} 
