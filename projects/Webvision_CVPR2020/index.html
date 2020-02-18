@@ -43,8 +43,36 @@
 						<p></p>
 						<p></p>
 						<p></p>
-						<p>Details will be announced here soon!</p>
-						<p></p>
+						<p>
+						Welcome to the Webvision Video Track 2020 challenge!
+<p></p>
+The idea of this challenge is to learn action representations from video subtitles without any human supervision.
+<p></p>
+The training data is based on the recently released MiningYouTube dataset (working title is 'Weak YouTube', but some people found that this sounds too negative). Please find the homepage here: https://github.com/hildekuehne/Weak_YouTube_dataset
+<p></p>
+The dataset comprises ~ 20,000 YouTube videos that display explain various egg recipes, namely for fried egg, scrambled egg, pancake, omelet, and egg roll.
+<p></p>
+For training, we provide the video indexes with the respective subtitles (downloaded in 2017/2018) as well as pre-extracted video clips with tentative labels as described in the paper. For the pre-extracted videos, we further provide pre-computed TSN features (https://github.com/yjxiong/temporal-segment-networks) based on the Kinetics pretrained model.
+<p></p>
+The training data is available under: https://github.com/hildekuehne/Weak_YouTube_dataset/tree/master/train
+<p></p>
+The training data is based on subtitles only. It additionally comprises a set of ~5000 videos with class labels and a human annotation if this class label is present in the video, which can be used for training or validation.
+<p></p>
+The testing data (and validation data for the challenge) is available under: https://github.com/hildekuehne/Weak_YouTube_dataset/tree/master/test
+						</p>
+					<h3>Two tracks</h3>
+			<p>
+Note that we will have two tracks for this challenge, one based on the original videos and one based on precomputed features only
+			</p>
+For the orginal video track, your free to use the full videos or the preextracted video clips. 
+For the feature track, you are only allowed to use the preextracted features from the 350k clips. 
+In both cases you are allowed to use the yes/no validation data listed in the 'val_yes_no.txt' file (here: https://github.com/hildekuehne/Weak_YouTube_dataset/tree/master/train) for validation and/or training. It's only a few clips per class, so it will not get you all the way, but any new ideas are welcome.
+<p></p>			
+You can use the orginal subititles or the generated labeles from the baseline. Please do not! download new subtitles as they can change over time.
+<p></p>
+You can use the test set of the original dataset as validation set. It is not allowed to include the data from the test set as additional training data!
+<p></p>
+					
 					</div>
 				</td>
 			</tr>
