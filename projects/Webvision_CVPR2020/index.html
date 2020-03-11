@@ -31,7 +31,7 @@
 <td valign="top">
 <div align="center">
 <p><img src="Webvision_header.jpg" alt="" height="320" border="0" /></p>
-<h1><span style="font-size: x-large;">Welcome to the WebVision Video Track</span></h1>
+<h1><span style="font-size: x-large;">Welcome to the WebVision Video Challenge</span></h1>
 <h3>&nbsp;</h3>
 <h3>as part of the</h3>
 <h3>&nbsp;</h3>
@@ -41,36 +41,188 @@
 <h3>Seattle, WA</h3>
 <h3>in conjunction with&nbsp;<a href="http://cvpr2020.thecvf.com/">CVPR 2020</a></h3>
 <p style="text-align: justify;">&nbsp;</p>
-<p style="text-align: justify;">Collecting data for large-scale action classification is becomming more and more time consuming. This puts a natural limit to the size of current benchmarks and makes it unlikely to ever have ImageNet scale benchmarks in action recognition with millions of samples. Additionally, those datasets are usually based on a hand-crafted class vocabulary based on easy to search categories as authors need to cover many different scenarios and at the same time, identify unique distinguishable actions. But techniques developed and finetuned on such data do not naturally transfer to applications in the wild. To adress this problem, we want to move some steps away from the usual action classification&nbsp;and explore the problem of learning actions from real-live videos without human supervision.&nbsp;</p>
-<p style="text-align: left;">The webvision video track run as part of the Workshop on Visual Understanding by Learning from Web Data. This workshop aims at promoting the advance of learning state-of-the-art visual models from webly supervised data. We want to transfer this idea to the case of learning action representations from video subtitles without any human supervision.</p>
-<h3 style="text-align: left;">Two tracks</h3>
-<p style="text-align: left;">We will have two tracks for this challenge, one based on the original videos and one based on precomputed features only.</p>
-<p style="text-align: left;"><strong>Video Track:</strong></p>
-<p style="text-align: left;">For the orginal video track, you are free to use the full videos or the pre-extracted video clips.&nbsp;</p>
-<p style="text-align: left;"><strong>Feature Track:</strong></p>
-<p style="text-align: left;">For the feature track, you are only allowed to use the preextracted features from the 350k clips.&nbsp;</p>
-<h3 style="text-align: justify;">&nbsp;Data</h3>
-<p style="text-align: justify;">The data for this challenge is based on the MiningYouTube dataset (working title is 'Weak YouTube', but some people found that this sounds too negative). Please find the homepage here: <a href="https://github.com/hildekuehne/Weak_YouTube_dataset" target="_blank" rel="noopener">https://github.com/hildekuehne/Weak_YouTube_dataset</a>&nbsp;. The dataset comprises ~ 20,000 YouTube videos that display explain various egg recipes, namely for fried egg, scrambled egg, pancake, omelet, and egg roll.</p>
-<p style="text-align: justify;">For training, we provide the video indexes with the respective subtitles (downloaded in 2017/2018) as well as pre-extracted video clips with tentative labels as described in the paper. For the feature-track, we further provide pre-computed TSN features (<a href="https://github.com/yjxiong/temporal-segment-networks" target="_blank" rel="noopener">https://github.com/yjxiong/temporal-segment-networks</a>) based on the Kinetics pretrained model. We hope that working with pre-computed features will allow a faster development and testing especially of new ideas on the mining and/or concept learning side and at the same time allow for an easier reproducability of methods. The training data for all tracks is available under: <a href="https://github.com/hildekuehne/Weak_YouTube_dataset/tree/master/train" target="_blank" rel="noopener">https://github.com/hildekuehne/Weak_YouTube_dataset/tree/master/train</a></p>
-<p style="text-align: justify;">The data additionally has a set of ~5000 videos with class labels and a human annotation if this class label is present in the video, which can be used for training or validation.</p>
-<p style="text-align: justify;">The testing data (and validation data for the challenge) is available under: <a href="https://github.com/hildekuehne/Weak_YouTube_dataset/tree/master/test" target="_blank" rel="noopener">https://github.com/hildekuehne/Weak_YouTube_dataset/tree/master/test</a></p>
-<p style="text-align: justify;">&nbsp;</p>
-<p style="text-align: justify;"><strong>General rules:</strong></p>
-<p style="text-align: justify;">You are allowed to use the yes/no validation data listed in the 'val_yes_no.txt' file (here: <a href="https://github.com/hildekuehne/Weak_YouTube_dataset/tree/master/train">https://github.com/hildekuehne/Weak_YouTube_dataset/tree/master/train</a>) for validation and/or training. It's only a few clips per class, so the assumption is that it will not get you all the way, but any new ideas are welcome.</p>
-<p style="text-align: justify;">You are only allowed to use the orginal subititles or the generated labels from the baseline. Please do not! download new subtitles as they can change over time and we would not be able to compare your methods to others any more.</p>
-<p style="text-align: justify;">You can use the test set of the original dataset as validation set. It is not allowed to include the data from the test set as additional training data!</p>
-<p style="text-align: justify;">&nbsp;</p>
-<h3 style="text-align: left;">Frequently Asked Questions</h3>
-<p style="text-align: justify;"><br /><strong>Can I use pretrained models for action classification?</strong><br />Yes, but! the model or the data that you use have to be freely available for everyone (e.g. the TSN or I3D models). You can also pretrain your own model by using a single standard datasets like Kinetics, ActivityNet etc. You need to indicate what dataset was used for pretraining or which backbone you used. You are not allowed to mix various datasets for better pretraining. You are not allowed to use any datasets or models for pretraining that are not publically available.</p>
-<p style="text-align: justify;"><br /><strong>Can I use other/more videos without human annotations?</strong><br />No. For fairness, we restrict the challenge to use only the videos provided with the MiningYouTube datasets. You are allowed to use one (!) more public action dataset for pretraining. You are not allowed to crawl for more videos by yourself.</p>
-<p style="text-align: justify;"><br /><strong>Can I use the text data (subtitles) in the MiningYouTube dataset?</strong><br />Yes, and we encourage you to do so. You are not allowed to download updated subtitles for the videos!</p>
+<p style="text-align: justify;">Collecting data for large-scale action classification is becomming more and more time consuming. This puts a natural limit to the size of current benchmarks. Additionally,  techniques developed and finetuned on such data do not naturally transfer to applications in the wild. To adress this problem, we want to move some steps away from the usual action classification and explore the problem of learning actions from real-live videos without human supervision. </p>
+							<p style="text-align: justify;">To address this problem, we are happy to bring you the first <strong>Webvision Video challenge</strong>! The idea of this challenge is to learn action classes in videos from subtitles only. To this end, we collected 20,000 YouTube videos dealing with various egg recipes such as pancake, omelete or eggroll. The challenge is about to learn actions mentioned in those videos, e.g. &quot;crack egg&quot;, or &quot;add butter&quot; without any human generated labels. To make it easy for everyone to bring their ideas to live, we will have two tracks for this challenge, one based on all available video data and one based on features-only! So everyone, no matter if you have a large GPU cluster or not, can get involved. We also provide a short tutorial and basedline code to get started in 1h. Just check it out!</p>
+							<p style="text-align: left;">The webvision video challenge is part of the <strong>Workshop on Visual Understanding by Learning from Web Data</strong>. The workshop aims at promoting the advance of learning state-of-the-art visual models from webly supervised data. We want to transfer this idea to the case of learning action representations from video subtitles without any human supervision.</p>
+							<p style="text-align: left;"></p>
+							<p style="text-align: left;"></p>
+							<div align="center">
+								<h2 style="text-align: justify;">Data</h2>
+								<p style="text-align: justify;">The data for this challenge is based on the MiningYouTube dataset ( you can find all details here: <a href="https://github.com/hildekuehne/Weak_YouTube_dataset" target="_blank" rel="noopener">https://github.com/hildekuehne/Weak_YouTube_dataset</a> ). The dataset comprises ~ 20,000 YouTube videos that display explain various egg recipes, namely for fried egg, scrambled egg, pancake, omelet, and egg roll.</p>
+								<p style="text-align: justify;"><strong>1)Training:</strong> We provide three different data modalities:</p>
+								<p style="text-align: justify;"><strong>a) Full videos: </strong>~20,000 video indexes of the full youtube videos with the respective subtitles (subtitles downloaded in 2017/2018), you would have to download the videos or contact webvisionworkshop AT gmail.com</p>
+								<ul>
+									<li style="text-align: justify;">video index file (<a href="https://mitibm.wyt.s3.us-east.cloud-object-storage.appdomain.cloud/videos_train.txt">videos_train.txt</a>)</li>
+									<li style="text-align: justify;">subtitles (<a href="https://mitibm.wyt.s3.us-east.cloud-object-storage.appdomain.cloud/train/subtitles.tar.gz">subtitles.tar</a>)</li>
+								</ul>
+								<p style="text-align: justify;"><strong>b) Action clips:</strong> ~350,000 pre-extracted video clips with tentative labels (carefull, not all of them are correct!) and subtitles</p>
+								<ul>
+									<li style="text-align: justify;">video clips, 200GB (<a href="https://mitibm.wyt.s3.us-east.cloud-object-storage.appdomain.cloud/train/vids_sorted.tar">vids_sorted.tar</a>)</li>
+									<li style="text-align: justify;">subtitles for each clip (<a href="https://mitibm.wyt.s3.us-east.cloud-object-storage.appdomain.cloud/train/subtitles_sorted_tar.tar.gz">subtitles_sorted_tar.tar.gz</a>)</li>
+								</ul>
+								<p style="text-align: justify;"><strong>c) Features:</strong> ~350,000 data files in hdf5 format with pre-computed rgb and flow features (<a href="https://github.com/yjxiong/temporal-segment-networks" target="_blank" rel="noopener">https://github.com/yjxiong/temporal-segment-networks</a>) for each frame based on a Kinetics pretrained backbone. Features are computed from the pre-extracted video clips with tentative labels (again, carefull, not all of them are correct!) and subtitles. Working with pre-computed features will allow a faster development and testing. Especially new ideas on the mining and/or concept learning side should be easy to test.</p>
+							</div>
+							<ul>
+								<div align="center">
+									<li style="text-align: justify;">data files (features + subtitles + labels), 150 GB (<a href="https://mitibm.wyt.s3.us-east.cloud-object-storage.appdomain.cloud/train/packed_numpy_new_flow_rgb.tar">packed_numpy_new_flow_rgb.tar</a>)</li>
+									<ul>
+
+								</ul>
+								</div>
+							</ul>
+							<div align="center">
+								<p style="text-align: justify;"><strong>2) Validation:</strong>  The data additionally has a set of ~5000 video clips IDs with class labels and a human annotation if this class label is present in the video, which can be used for training or validation.</p>
+								<ul>
+									<li style="text-align: justify;">validation list (<a href="https://mitibm.wyt.s3.us-east.cloud-object-storage.appdomain.cloud/val_yes_no.txt">val_yes_no.txt</a>)</li>
+								</ul>
+								<p style="text-align: justify;"><strong>3)  Test:</strong> The test data (and validation data for the challenge) is available under: </p>
+								<div align="center">
+									<div align="center">
+										<ul>
+											<li style="text-align: justify;">video files (<a href="https://mitibm.wyt.s3.us-east.cloud-object-storage.appdomain.cloud/test/vids_test.tar">vids_test.tar</a>)</li>
+											<li style="text-align: justify;">features (<a href="https://mitibm.wyt.s3.us-east.cloud-object-storage.appdomain.cloud/test/features.tar">features.tar</a>)</li>
+											<li style="text-align: justify;">transcripts (<a href="https://mitibm.wyt.s3.us-east.cloud-object-storage.appdomain.cloud/test/transcripts.tar">transcripts.tar</a>)</li>
+											<li style="text-align: justify;">groundtruth (<a href="https://mitibm.wyt.s3.us-east.cloud-object-storage.appdomain.cloud/test/groundTruth.tar">groundTruth.tar</a>)</li>
+										</ul>
+										<p style="text-align: justify;"></p>
+									</div>
+								</div>
+								<p style="text-align: justify;"><strong>4) Challenge data: </strong>We will have two tracks for this challenge, one based on the original videos and one based on precomputed features only.</p>
+								<p style="text-align: justify;"><strong>a) Video Track: </strong>For the orginal video track, you are free to use the full videos or the pre-extracted video clips:</p>
+								<ul>
+									<li style="text-align: justify;">challenge video files (<a href="https://mitibm.wyt.s3.us-east.cloud-object-storage.appdomain.cloud/challenge/vids.tar">vids.tar</a>)</li>
+								</ul>
+								<p style="text-align: justify;"><strong>b) Feature Track: </strong>For the feature track, you are only allowed to use the preextracted features (named under 3) Features) from the 350k clips. </p>
+							</div>
+							<ul>
+								<li style="text-align: justify;"> challenge feature files (<a href="https://mitibm.wyt.s3.us-east.cloud-object-storage.appdomain.cloud/challenge/features.tar">features.tar</a>)</li>
+							</ul>
+							<p style="text-align: justify;"></p>
+							<h2 style="text-align: justify;">Getting started</h2>
+							<p style="text-align: justify;">We provide a vanilla benchmark code that you can easily run to get an idea of the task and the data.</p>
+							<p style="text-align: justify;"><strong>1) Download data</strong></p>
+							<p style="text-align: justify;">To get started with the code, please first make a folder for the data, e.g. /my/data/folder/ with a folder /train and download and unpack the feature files under 1c). Also under /my/data/folder/ make a folder /test and download and unpack the all test files under 3).</p>
+							<p style="text-align: justify;">Your folder structure should look like that:</p>
+							<p style="text-align: left;">
+							<code>
+							/my/data/folder/<br />
+							|   +---train<br />
+								|   |    +---packed_numpy_new_flow_rgb<br />
+								|   |         | file_0000.h5f<br />
+								|   |         | ...<br />
+								|   |       <br />
+								|   \---test<br />
+								|       +---features<br />
+								|       |   | blahblah.npy<br />
+								|       |   | ... <br />
+								|       +---groundTruth<br />
+								|       |   | blahblah.txt<br />
+								|       |   | ... <br />
+								|       +---transcripts<br />
+								|       |   | blahblah.txt<br />
+								|       |   | ... <br />
+								</code>
+								</p>
+							<p style="text-align: justify;"></p>
+							<p style="text-align: justify;"><strong>2) Checkout code</strong></p>
+							<p style="text-align: justify;">Checkout the challenge repository: https://github.com/qinenergy/webvision-2020-public</p>
+							<p style="text-align: justify;"></p>
+							<p style="text-align: justify;"><strong>3) Run the videolearning example</strong></p>
+							<p style="text-align: justify;">The root folder for the videolearning example is &lt;checkout_path&gt;/webvision-2020-public/videolearning </p>
+							<p style="text-align: justify;"></p>
+							<p style="text-align: justify;"><strong><em>a)</em></strong> Install the requirements.txt in your prefered enviroment.</p>
+							<p style="text-align: justify;"><code>pip install -r &lt;checkout_path&gt;/webvision-2020-public/videolearning/requirements.txt</code></p>
+							<p style="text-align: justify;"></p>
+							<p style="text-align: justify;"><em><strong>b)</strong></em> Adjust paths in the config file</p>
+							<p style="text-align: justify;">Open the config file under <code>&lt;checkout_path&gt;/webvision-2020-public/videolearning/config</code></p>
+							<p style="text-align: justify;">Replace all occurances of /my/data/folder/ with the path where you stored the data.</p>
+							<p style="text-align: justify;"></p>
+							<p style="text-align: justify;"><strong><em>c) Training</em></strong><br />
+								The training is run by the function</p>
+							<p style="text-align: justify;"><code>&lt;checkout_path&gt;/webvision-2020-public/videolearning/src/train_multic_webvisionTest.py</code></p>
+							<p style="text-align: justify;"><em><strong>Details:</strong></em></p>
+							<p style="text-align: justify;">The dataset needs ~150GB memory + some overhead in case you want to balance the training data. As not all systems provide this memory, we provide a full and a sparse data loader:</p>
+							<p style="text-align: justify;"><em>Full dataloader</em><br />
+								If you have enough memory, please set the &quot;sparse&quot; flag in the config file to 0 and you can start the training.</p>
+							<p style="text-align: justify;"><em>Sparse dataloader</em><br />
+								If you don't have enough memory, please set the &quot;sparse&quot; flag in the config file to 1 and set the &quot;sparse_num_frames&quot; to the number of frames you want to load per file for each epoch. Depending on the fraction of files you can load, you also need to adapt the number of epochs. E.g. each hdf file has ~150k frames, so if you load 15k frames per file you need 10 epochs until all data has been processed once and you need to multiply the number of epochs by 10 to get the same training.</p>
+							<p style="text-align: justify;"><em>Balancing training data</em><br />
+								As the original distribution of the training data is highly imbalanced, it is recommended to balance the training data (downsample most occurring classes, upsample least occurring classes). You can do this by setting the flag &quot;balance_training&quot; in the config file to 1. The implementation can be found in the respective dataset classes ./datasets/train_ds_full.py and ./datasets/train_ds_sparse.py and can be modified for different ratios.</p>
+							<p style="text-align: justify;"><strong><em>d) Computing output probabilities</em></strong><br />
+								The test function expects a score between [0,..,1] for each class for each frame of the video. You can compute output probabilities with the function:</p>
+							<p style="text-align: justify;"><code>&lt;checkout_path&gt;/webvision-2020-public/videolearning/src/mp_save_probs_webvisionTest.py</code></p>
+							<div align="center">
+								<p style="text-align: justify;"><em><strong>Details:</strong></em></p>
+							</div>
+							<p style="text-align: justify;">Use softmax?<br />
+								The function uses softmax to convert the output of the last linear layer to [0, .., 1]. If you don't want that, please comment line 49 in mp_save_probs_webvisionTest.py</p>
+							<p style="text-align: justify;">Use conditional probabilities<br />
+								The function can further make use for the class prior from training to compute the conditional probabilities of the class scores (might be a good idea if the training data is not balanced). You can turn the is function on/off by setting the respective parameter &quot;get_cond_probs&quot; in the config file.</p>
+							<p style="text-align: justify;"><em><strong>e) Testing</strong></em><br />
+							</p>
+							<div align="center">
+								<p style="text-align: justify;">For testing please run the function:</p>
+								<p style="text-align: justify;"><code>&lt;checkout_path&gt;/webvision-2020-public/videolearning/src/test_multic_webvisionTest.py</code></p>
+								<p style="text-align: justify;">We measure accuracy as intersection over union (Jaccard IoU), by first computing the framewise IoU of all classes and take the mean over all present classes as IoU for each video. The final score is computed as mean over all video IoUs.</p>
+								<p style="text-align: justify;">The here provided testing routine is run &quot;as is&quot; on the evaluation server.</p>
+								<div align="center">
+									<p style="text-align: justify;"><em><strong>Details:</strong></em></p>
+								</div>
+								<p style="text-align: justify;">Some remarks about the testing routine:</p>
+							</div>
+							<p style="text-align: justify;">Annotation by natural language can be very inconsistent and even contradicting, e.g. we have three different classes &quot;whisk_egg&quot;, &quot;beat_egg&quot;, and &quot;mix_egg&quot;, which obviously all refer to the same action and we have other classes such as &quot;add_pepper&quot; which can refer to the bell pepper as well as to grounded pepper powder.</p>
+							<p style="text-align: justify;">It is therefore difficult to assess the classification by just comparing the max score label to the annotated one as nobody knows if the annotator was more a &quot;whisk_egg&quot;, &quot;beat_egg&quot;, or &quot;mix_egg&quot; type of person.</p>
+							<p style="text-align: justify;">We therefore decided to use the task of video alignment to test the quality of you classifier. Alignment means that the transcripts of the actions ( i.a. the action labels in the right order) are already given and the task is to find the right boundaries for the given actions in the video. We know from previous work on weak learning for video sequences (see e.g. https://ieeexplore.ieee.org/document/8585084, https://arxiv.org/abs/1610.02237) that this task is usually a good surrogate for the overall classification accuracy. In this case it helps to avoid any language inconsistencies as it aligns the output to the correct action labels only and ignores the rest. It is therefore not so important which score was given to &quot;mix_egg&quot; or &quot;beat_egg&quot;, as only the scores of the class &quot;whisk_egg&quot; would be considered (if this was the annotation).</p>
+							<p style="text-align: justify;"></p>
+							<div align="center">
+								<p style="text-align: justify;"><strong><em>f) Prepare challenge submission</em></strong><br />
+									When you run step d) with the callenge test data (just chage the folder specified under &quot;test_features&quot; and &quot;out_probs&quot; in the config file), you can use the output of d) for the challenge submission. You find the output probabilities in the folder specified under &quot;out_probs&quot; in the config file. You have to zip all 50 numpy files into one zip file withour any directories and submit it to the Codalab challenge website. </p>
+								<p style="text-align: justify;"></p>
+							</div>
+							<div align="center">
+								<h2 style="text-align: left;">Challenge details</h2>
+								<p style="text-align: left;">We run two tracks in this challenge. For both tracks, you need to submit a .zip file with 50 numpy files with the same filename as the original video or image files (file_0000.npy, file_0001.npy, ... etc. ) . The numpy array needs to have the shape (num_frames, num_classes) with num_classes = 513. You can find the mapping for the classes in the file &lt;checkout_path&gt;/webvision-2020-public/videolearning/src/mapping_without_meta.py . Files generated by the function mp_save_probs_webvisionTest.py (see Getting stated, d)) are already in the right format.</p>
+								<p style="text-align: left;"></p>
+								<h3 style="text-align: left;">Video track</h3>
+								<p style="text-align: left;">For the video track you are allowed to use any video/image data provided in the dataset. This can be the full videos or the video clips. You can train any CNN architecture and make use of the provided subtitles. </p>
+								<h3 style="text-align: left;">Feature track</h3>
+								<p style="text-align: left;">For the feature track, you are only allowed to use the features provided under Data 1c) as well as any subtitle information of the clips or the full videos. </p>
+								<p style="text-align: left;"></p>
+								<p style="text-align: left;">For both tracks, you are allowed to use additional text data and knowledge sources that are publically available. For details, please checkout the General rules and the FAQ section.</p>
+								<p style="text-align: left;"></p>
+							</div>
+							<h2 style="text-align: justify;"><strong>General rules</strong></h2>
+							<p style="text-align: justify;">Training data: You are allowed to use the yes/no validation data listed in the 'val_yes_no.txt' file (here:) for validation and/or training. It's only a few clips per class, so the assumption is that it will not get you all the way, but any new ideas are welcome.</p>
+							<p style="text-align: justify;">Subtitles: You are only allowed to use the orginal subititles or the generated labels from the baseline. Please do not! download new subtitles as they can change over time and we would not be able to compare your methods to others any more.</p>
+<p style="text-align: justify;">Validation and testing: You can use the test set of the original dataset as validation set. It is not allowed to include the data from the test set as additional training data!</p>
+							<p style="text-align: justify;">As a rule of thumb, please keep everything reproductionable! </p>
+							<p style="text-align: justify;"></p>
+							<h2 style="text-align: left;">Frequently Asked Questions</h2>
+							<p style="text-align: justify;"><br /><strong>Can I use pretrained models for action classification?</strong><br />
+								Yes, but! :</p>
+							<ul>
+								<li style="text-align: justify;">Either: The model or the data that you use have to be freely available for everyone (e.g. the TSN or I3D models). </li>
+								<li style="text-align: justify;">Or: You can only use ONE! single PUBLIC! datasets like Kinetics, ActivityNet etc. </li>
+								<li style="text-align: justify;">In both cases, you need to submit your results to the video track, NOT the feature track.</li>
+								<li style="text-align: justify;">You need to indicate what dataset was used for pretraining or which backbone you used. </li>
+								<li style="text-align: justify;">You are not allowed to mix various datasets for better pretraining. </li>
+								<li style="text-align: justify;">You are not allowed to use any datasets or models for pretraining that are not publically available.</li>
+							</ul>
+							<p style="text-align: justify;"><br /><strong>Can I use other/more videos without human annotations?</strong><br />No. For fairness, we restrict the challenge to use only the videos provided with the MiningYouTube datasets. You are allowed to use one (!) more public action dataset for pretraining. You are not allowed to crawl for more videos by yourself.</p>
+							<p style="text-align: justify;"><br /><strong>Can I use the text data (subtitles) in the MiningYouTube dataset?</strong><br />Yes, and we encourage you to do so. You are not allowed to download updated subtitles for the videos!</p>
 <p style="text-align: justify;"><br /><strong>Can I use external text data, or models pretrained with external text data, with or without human annotation?</strong><br />Yes, but any data or model has to be publicly available, e.g. WordNet, Knowledge Graph, etc. can be used. Models trained using external text data are also allowed, such as Word2Vec, BERT models, as the data is available or made available. You need to explicitly state in your final submission that what text datasets/models are used.</p>
-<p style="text-align: justify;"><strong>Can I crawl text data according to MiningYouTube concepts by myself, and use it as training data?</strong><br />Yes, as long as the data is publicly and legally available, so people could reproduce the results. If you crawl text data by yourself, please clearly state it in your submission, and you need to make it available to public before the final submission deadline. An URL should be provided in the method description part of your submission.</p>
-<p style="text-align: justify;"><br />If you have other questions, please drop an email to webvisionworkshop AT gmail.com</p>
+							<p style="text-align: justify;"></p>
+							<p style="text-align: justify;"><strong>Can I crawl text data according to MiningYouTube concepts by myself, and use it as training data?</strong><br />Yes, as long as the data is publicly and legally available, so people could reproduce the results. If you crawl text data by yourself, please clearly state it in your submission, and you need to make it available to public before the final submission deadline. An URL should be provided in the method description part of your submission.</p>
+<p style="text-align: justify;"><br />If you have any questions, please drop an email to webvisionworkshop AT gmail.com</p>
 </div>
 </td>
 </tr>
-</tbody>
+				<tr>
+					<td valign="top">
+						<p></p>
+					</td>
+				</tr>
+			</tbody>
 </table>
 <p>&nbsp;</p>
 	</body>
