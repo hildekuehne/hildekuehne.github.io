@@ -29,7 +29,7 @@
 <tbody>
 <tr>
 <td valign="top">
-<div align="center">
+						<div align="center">
 <p><img src="Webvision_header.jpg" alt="" height="320" border="0" /></p>
 <h1><span style="font-size: x-large;">Welcome to the WebVision Video Challenge</span></h1>
 <h3>&nbsp;</h3>
@@ -49,7 +49,10 @@
 							<div align="center">
 								<h2 style="text-align: justify;">Data</h2>
 								<p style="text-align: justify;">The data for this challenge is based on the MiningYouTube dataset ( you can find all details here: <a href="https://github.com/hildekuehne/Weak_YouTube_dataset" target="_blank" rel="noopener">https://github.com/hildekuehne/Weak_YouTube_dataset</a> ). The dataset comprises ~ 20,000 YouTube videos that display explain various egg recipes, namely for fried egg, scrambled egg, pancake, omelet, and egg roll.</p>
-								<p style="text-align: justify;"><strong>1)Training:</strong> We provide three different data modalities:</p>
+								<p style="text-align: justify;"><strong>1)Training</strong></p>
+								<p style="text-align: justify;"></p>
+								<p style="text-align: justify;">We provide three different data modalities: full videos (resp. You tube IDs, you need to download the videos), preextracted action clips (~ 5-10 sec per clip), and precomputed features for the action clips. </p>
+								<p style="text-align: justify;"></p>
 								<p style="text-align: justify;"><strong>a) Full videos: </strong>~20,000 video indexes of the full youtube videos with the respective subtitles (subtitles downloaded in 2017/2018), you would have to download the videos or contact webvisionworkshop AT gmail.com</p>
 								<ul>
 									<li style="text-align: justify;">video index file (<a href="https://drive.google.com/file/d/1wkanWjm7bhugPwKpfxod9X9WfPi9DXk3/">videos_train.txt</a>)</li>
@@ -60,16 +63,24 @@
 									<li style="text-align: justify;">video clips, 200GB (<a href="https://drive.google.com/file/d/1FLyFxJJJv5VhRhdJ5mlRncX_FEaV37av/">vids_sorted_tar.tar</a>)</li>
 									<li style="text-align: justify;">subtitles for each clip (<a href="https://drive.google.com/file/d/1IQIei6K0zBt7CRQxzXb9viBhcVUZ6goi/">subtitles_sorted_tar.tar.gz</a>)</li>
 								</ul>
-								<p style="text-align: justify;"><strong>c) Features:</strong> ~350,000 data files in hdf5 format with pre-computed rgb and flow features (<a href="https://github.com/yjxiong/temporal-segment-networks" target="_blank" rel="noopener">https://github.com/yjxiong/temporal-segment-networks</a>) for each frame based on a Kinetics pretrained backbone. Features are computed from the pre-extracted video clips with tentative labels (again, carefull, not all of them are correct!) and subtitles. Working with pre-computed features will allow a faster development and testing. Especially new ideas on the mining and/or concept learning side should be easy to test.</p>
+								<p style="text-align: justify;"><strong>c) Features:</strong> ~350,000 data files (packed in 350 hdf5 files) with pre-computed rgb and flow features (<a href="https://github.com/yjxiong/temporal-segment-networks" target="_blank" rel="noopener">https://github.com/yjxiong/temporal-segment-networks</a>) for each frame based on a Kinetics pretrained backbone. Features are computed from the pre-extracted video clips with tentative labels (again, carefull, not all of them are correct!) and subtitles. Working with pre-computed features will allow a faster development and testing. Especially new ideas on the mining and/or concept learning side should be easy to test.</p>
 							</div>
 							<ul>
 								<div align="center">
 									<li style="text-align: justify;">data files (features + subtitles + labels), 150 GB (<a href="https://drive.google.com/file/d/1_pPOqObABYVkZ7xPA--SnkhK5v5j7_a5/">packed_numpy_new_flow_rgb.tar</a>)</li>
-									<ul>
-
-								</ul>
 								</div>
 							</ul>
+							<p style="text-align: justify;">Each hdf file comprises the features, tentative labels, subtiles, and respective filenames. You can access in the hdf file as follows:</p>
+							<p style="text-align: justify;"><code>hf = h5py.File(file_in, 'r');<br />
+								temp_feat = hf.get('data')[()];<br />
+								temp_labels = hf.get('labels')[()];<br />
+								temp_labels = hf.get('subtitles')[()];<br />
+								temp_labels = hf.get('filenames')[()];<br />
+								hf.close();<br /></code>
+							</p>
+							<p style="text-align: justify;"></p>
+						</div>
+						<div align="center">
 							<div align="center">
 								<p style="text-align: justify;"><strong>2) Validation:</strong>  The data additionally has a set of ~5000 video clips IDs with class labels and a human annotation if this class label is present in the video, which can be used for training or validation.</p>
 								<ul>
@@ -99,30 +110,33 @@
 							</ul>
 							<p style="text-align: justify;"></p>
 							<h2 style="text-align: justify;">Getting started</h2>
-							<p style="text-align: justify;">We provide a vanilla benchmark code that you can easily run to get an idea of the task and the data.</p>
+							<p style="text-align: justify;">We provide a vanilla benchmark code that works on features only to get an idea of the task and the data. The following example has been tested under Python 3.6.</p>
 							<p style="text-align: justify;"><strong>1) Download data</strong></p>
-							<p style="text-align: justify;">To get started with the code, please first make a folder for the data, e.g. /my/data/folder/ with a folder /train and download and unpack the feature files under 1c). Also under /my/data/folder/ make a folder /test and download and unpack the all test files under 3).</p>
+							<p style="text-align: justify;">To get started with the code:</p>
+							<ul>
+								<li style="text-align: justify;">make a folder for the data, e.g. /my/data/folder/ </li>
+								<li style="text-align: justify;">under /my/data/folder/ make a folder /train and download and unpack _either_ the full feature files under 1c) (<a href="https://drive.google.com/file/d/1_pPOqObABYVkZ7xPA--SnkhK5v5j7_a5/">packed_numpy_new_flow_rgb.tar</a>) _or_ a smaller dummy set (<a href="https://drive.google.com/file/d/11Xz4uogwqN_Wg57p0VrsYEx23YqFThBf/">packed_numpy_new_flow_rgb_dummy.tar</a> , 8GB).</li>
+								<li style="text-align: justify;">also under /my/data/folder/ make a folder /test and download and unpack the all test files under 3) (<a href="https://drive.google.com/file/d/1FLjMpeO28H0Q10NQGjGvXevyf7iJ6R39/">features.tar</a>, <a href="https://drive.google.com/file/d/1RCNHvRCZJV9cz7n9NdrrUuGVhuR8OLwC/">transcripts.tar</a>, <a href="https://drive.google.com/file/d/1sFBAvYNi8K6quHWCO4CY0DpbFUoN8TNS/">groundTruth.tar</a>).</li>
+							</ul>
 							<p style="text-align: justify;">Your folder structure should look like that:</p>
-							<p style="text-align: left;">
-							<code>
+							<p style="text-align: left;"><code>
 							/my/data/folder/<br />
-							|   +---train<br />
-								|   |    +---packed_numpy_new_flow_rgb<br />
-								|   |         | file_0000.h5f<br />
-								|   |         | ...<br />
-								|   |       <br />
-								|   \---test<br />
-								|       +---features<br />
-								|       |   | blahblah.npy<br />
-								|       |   | ... <br />
-								|       +---groundTruth<br />
-								|       |   | blahblah.txt<br />
-								|       |   | ... <br />
-								|       +---transcripts<br />
-								|       |   | blahblah.txt<br />
-								|       |   | ... <br />
-								</code>
-								</p>
+									|   +---train<br />
+									|   |    +---packed_numpy_new_flow_rgb<br />
+									|   |         | file_0000.h5f<br />
+									|   |         | ...<br />
+									|   |       <br />
+									|   \---test<br />
+									|   +---features<br />
+									|   | blahblah.npy<br />
+									|   | ...<br />
+									|   +---groundTruth<br />
+									|   | blahblah.txt<br />
+									|   | ...<br />
+									|   +---transcripts<br />
+									|   | blahblah.txt<br />
+									|   | ...<br />
+								</code></p>
 							<p style="text-align: justify;"></p>
 							<p style="text-align: justify;"><strong>2) Checkout code</strong></p>
 							<p style="text-align: justify;">Checkout the challenge repository: https://github.com/qinenergy/webvision-2020-public</p>
@@ -138,7 +152,7 @@
 							<p style="text-align: justify;">Replace all occurances of /my/data/folder/ with the path where you stored the data.</p>
 							<p style="text-align: justify;"></p>
 							<p style="text-align: justify;"><strong><em>c) Training</em></strong><br />
-								The training is run by the function</p>
+									The training is run by the function</p>
 							<p style="text-align: justify;"><code>&lt;checkout_path&gt;/webvision-2020-public/videolearning/src/train_multic_webvisionTest.py</code></p>
 							<p style="text-align: justify;"><em><strong>Details:</strong></em></p>
 							<p style="text-align: justify;">The dataset needs ~150GB memory + some overhead in case you want to balance the training data. As not all systems provide this memory, we provide a full and a sparse data loader:</p>
@@ -149,13 +163,13 @@
 							<p style="text-align: justify;"><em>Balancing training data</em><br />
 								As the original distribution of the training data is highly imbalanced, it is recommended to balance the training data (downsample most occurring classes, upsample least occurring classes). You can do this by setting the flag &quot;balance_training&quot; in the config file to 1. The implementation can be found in the respective dataset classes ./datasets/train_ds_full.py and ./datasets/train_ds_sparse.py and can be modified for different ratios.</p>
 							<p style="text-align: justify;"><strong><em>d) Computing output probabilities</em></strong><br />
-								The test function expects a score between [0,..,1] for each class for each frame of the video. You can compute output probabilities with the function:</p>
+									The test function expects a score between [0,..,1] for each class for each frame of the video. You can compute output probabilities with the function:</p>
 							<p style="text-align: justify;"><code>&lt;checkout_path&gt;/webvision-2020-public/videolearning/src/mp_save_probs_webvisionTest.py</code></p>
 							<div align="center">
 								<p style="text-align: justify;"><em><strong>Details:</strong></em></p>
 							</div>
 							<p style="text-align: justify;">Use softmax?<br />
-								The function uses softmax to convert the output of the last linear layer to [0, .., 1]. If you don't want that, please comment line 49 in mp_save_probs_webvisionTest.py</p>
+									The function uses softmax to convert the output of the last linear layer to [0, .., 1]. If you don't want that, please comment line 49 in mp_save_probs_webvisionTest.py</p>
 							<p style="text-align: justify;">Use conditional probabilities<br />
 								The function can further make use for the class prior from training to compute the conditional probabilities of the class scores (might be a good idea if the training data is not balanced). You can turn the is function on/off by setting the respective parameter &quot;get_cond_probs&quot; in the config file.</p>
 							<p style="text-align: justify;"><em><strong>e) Testing</strong></em><br />
@@ -176,19 +190,53 @@
 							<p style="text-align: justify;"></p>
 							<div align="center">
 								<p style="text-align: justify;"><strong><em>f) Prepare challenge submission</em></strong><br />
-									When you run step d) with the callenge test data (just chage the folder specified under &quot;test_features&quot; and &quot;out_probs&quot; in the config file), you can use the output of d) for the challenge submission. You find the output probabilities in the folder specified under &quot;out_probs&quot; in the config file. You have to zip all 50 numpy files into one zip file withour any directories and submit it to the Codalab challenge website. </p>
+								</p>
+								<p style="text-align: justify;">Prepare data:</p>
+								<div align="center">
+									<ul>
+										<li style="text-align: justify;">Under /my/data/folder/ make a folder /challenge and download and unpack the complete feature files under Data 4b) (<a href="https://drive.google.com/file/d/14bpugRX2WGW0MSrk9OrlQpCWo71GPlGV/view?usp=sharing">features.tar</a>) .</li>
+										<li style="text-align: justify;">Your folder structure should look like that:</li>
+									</ul>
+									<p style="text-align: left;"><code>/my/data/folder/<br />
+												| +---train<br />
+												| | +---packed_numpy_new_flow_rgb<br />
+												| | | file_0000.h5f<br />
+												| | | ...<br />
+												| |<br />
+												| +---test<br />
+												| | +---features<br />
+												| | | blahblah.npy<br />
+												| | | ...<br />
+												| | +---groundTruth<br />
+												| | | blahblah.txt<br />
+												| | | ...<br />
+												| | +---transcripts<br />
+												| | | blahblah.txt<br />
+												| | | ...<br />
+												| \---challenge<br />
+											|   +---features<br />
+											|   | file_0000.npy<br />
+											|   | ...<br />
+										</code></p>
+									<p style="text-align: justify;"></p>
+									<p style="text-align: justify;">Run code:</p>
+								</div>
+								<ul>
+									<li style="text-align: justify;">Change the folder specified under &quot;test_features&quot; and &quot;out_probs&quot; in the config file to the challenge directory</li>
+									<li style="text-align: justify;">Run step d), function <code>mp_save_probs_webvisionTest.py</code> , with the callenge test data </li>
+									<li style="text-align: justify;">You should find the output probabilities in the folder specified under &quot;out_probs&quot; in the config file. </li>
+									<li style="text-align: justify;">Zip all 50 numpy files into one zip file without any directories and submit it to the Codalab challenge website. The submission file should look like this: <a href="https://drive.google.com/file/d/1crJbiwcMXZU5EAOJghqVc1urB_-fNqPd/">dummy_submission.zip</a></li>
+								</ul>
 								<p style="text-align: justify;"></p>
-							</div>
-							<div align="center">
 								<h2 style="text-align: left;">Challenge details</h2>
 								<p style="text-align: left;">We run two tracks in this challenge. For both tracks, you need to submit a .zip file with 50 numpy files with the same filename as the original video or image files (file_0000.npy, file_0001.npy, ... etc. ) . The numpy array needs to have the shape (num_frames, num_classes) with num_classes = 513. You can find the mapping for the classes in the file &lt;checkout_path&gt;/webvision-2020-public/videolearning/src/mapping_without_meta.py . Files generated by the function mp_save_probs_webvisionTest.py (see Getting stated, d)) are already in the right format.</p>
 								<p style="text-align: left;"></p>
 								<h3 style="text-align: left;">Video track</h3>
 								<h3 style="text-align: left;"><a href="https://competitions.codalab.org/competitions/23277">Sumission: CodaLab Webvision - Video track</a></h3>
-								<p style="text-align: left;">For the video track you are allowed to use any video/image data provided in the dataset. This can be the full videos or the video clips. You can train any CNN architecture and make use of the provided subtitles. </p>
+								<p style="text-align: left;">For the video track you are allowed to use any video/image data provided in the dataset. This can be the full videos or the video clips. You can train any CNN architecture and make use of the provided subtitles.</p>
 								<h3 style="text-align: left;">Feature track</h3>
 								<h3 style="text-align: left;"><a href="https://competitions.codalab.org/competitions/23278">Sumission: CodaLab Webvision - Video track - FEATURES ONLY!</a></h3>
-								<p style="text-align: left;">For the feature track, you are only allowed to use the features provided under Data 1c) as well as any subtitle information of the clips or the full videos. </p>
+								<p style="text-align: left;">For the feature track, you are only allowed to use the features provided under Data 1c) as well as any subtitle information of the clips or the full videos.</p>
 								<p style="text-align: left;"></p>
 								<p style="text-align: left;">For both tracks, you are allowed to use additional text data and knowledge sources that are publically available. For details, please checkout the General rules and the FAQ section.</p>
 								<p style="text-align: left;"></p>
@@ -196,12 +244,13 @@
 							<h2 style="text-align: justify;"><strong>General rules</strong></h2>
 							<p style="text-align: justify;">Training data: You are allowed to use the yes/no validation data listed in the 'val_yes_no.txt' file (here:) for validation and/or training. It's only a few clips per class, so the assumption is that it will not get you all the way, but any new ideas are welcome.</p>
 							<p style="text-align: justify;">Subtitles: You are only allowed to use the orginal subititles or the generated labels from the baseline. Please do not! download new subtitles as they can change over time and we would not be able to compare your methods to others any more.</p>
-<p style="text-align: justify;">Validation and testing: You can use the test set of the original dataset as validation set. It is not allowed to include the data from the test set as additional training data!</p>
+							<p style="text-align: justify;">Validation and testing: You can use the test set of the original dataset as validation set. It is not allowed to include the data from the test set as additional training data!</p>
 							<p style="text-align: justify;">As a rule of thumb, please keep everything reproductionable! </p>
 							<p style="text-align: justify;"></p>
 							<h2 style="text-align: left;">Frequently Asked Questions</h2>
-							<p style="text-align: justify;"><br /><strong>Can I use pretrained models for action classification?</strong><br />
-								Yes, but! :</p>
+							<p style="text-align: justify;"><br />
+								<strong>Can I use pretrained models for action classification?</strong><br />
+									Yes, but! :</p>
 							<ul>
 								<li style="text-align: justify;">Either: The model or the data that you use have to be freely available for everyone (e.g. the TSN or I3D models). </li>
 								<li style="text-align: justify;">Or: You can only use ONE! single PUBLIC! datasets like Kinetics, ActivityNet etc. </li>
@@ -210,14 +259,22 @@
 								<li style="text-align: justify;">You are not allowed to mix various datasets for better pretraining. </li>
 								<li style="text-align: justify;">You are not allowed to use any datasets or models for pretraining that are not publically available.</li>
 							</ul>
-							<p style="text-align: justify;"><br /><strong>Can I use other/more videos without human annotations?</strong><br />No. For fairness, we restrict the challenge to use only the videos provided with the MiningYouTube datasets. You are allowed to use one (!) more public action dataset for pretraining. You are not allowed to crawl for more videos by yourself.</p>
-							<p style="text-align: justify;"><br /><strong>Can I use the text data (subtitles) in the MiningYouTube dataset?</strong><br />Yes, and we encourage you to do so. You are not allowed to download updated subtitles for the videos!</p>
-<p style="text-align: justify;"><br /><strong>Can I use external text data, or models pretrained with external text data, with or without human annotation?</strong><br />Yes, but any data or model has to be publicly available, e.g. WordNet, Knowledge Graph, etc. can be used. Models trained using external text data are also allowed, such as Word2Vec, BERT models, as the data is available or made available. You need to explicitly state in your final submission that what text datasets/models are used.</p>
+							<p style="text-align: justify;"><br />
+								<strong>Can I use other/more videos without human annotations?</strong><br />
+								No. For fairness, we restrict the challenge to use only the videos provided with the MiningYouTube datasets. You are allowed to use one (!) more public action dataset for pretraining. You are not allowed to crawl for more videos by yourself.</p>
+							<p style="text-align: justify;"><br />
+								<strong>Can I use the text data (subtitles) in the MiningYouTube dataset?</strong><br />
+								Yes, and we encourage you to do so. You are not allowed to download updated subtitles for the videos!</p>
+							<p style="text-align: justify;"><br />
+								<strong>Can I use external text data, or models pretrained with external text data, with or without human annotation?</strong><br />
+								Yes, but any data or model has to be publicly available, e.g. WordNet, Knowledge Graph, etc. can be used. Models trained using external text data are also allowed, such as Word2Vec, BERT models, as the data is available or made available. You need to explicitly state in your final submission that what text datasets/models are used.</p>
 							<p style="text-align: justify;"></p>
-							<p style="text-align: justify;"><strong>Can I crawl text data according to MiningYouTube concepts by myself, and use it as training data?</strong><br />Yes, as long as the data is publicly and legally available, so people could reproduce the results. If you crawl text data by yourself, please clearly state it in your submission, and you need to make it available to public before the final submission deadline. An URL should be provided in the method description part of your submission.</p>
-<p style="text-align: justify;"><br />If you have any questions, please drop an email to webvisionworkshop AT gmail.com</p>
-</div>
-</td>
+							<p style="text-align: justify;"><strong>Can I crawl text data according to MiningYouTube concepts by myself, and use it as training data?</strong><br />
+								Yes, as long as the data is publicly and legally available, so people could reproduce the results. If you crawl text data by yourself, please clearly state it in your submission, and you need to make it available to public before the final submission deadline. An URL should be provided in the method description part of your submission.</p>
+							<p style="text-align: justify;"><br />
+								If you have any questions, please drop an email to webvisionworkshop AT gmail.com</p>
+						</div>
+					</td>
 </tr>
 				<tr>
 					<td valign="top">
