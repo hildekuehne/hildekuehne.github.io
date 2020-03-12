@@ -74,8 +74,8 @@
 							<p style="text-align: justify;"><code>hf = h5py.File(file_in, 'r');<br />
 								temp_feat = hf.get('data')[()];<br />
 								temp_labels = hf.get('labels')[()];<br />
-								temp_labels = hf.get('subtitles')[()];<br />
-								temp_labels = hf.get('filenames')[()];<br />
+								temp_subtitles = hf.get('subtitles')[()];<br />
+								temp_filenames = hf.get('filenames')[()];<br />
 								hf.close();<br /></code>
 							</p>
 							<p style="text-align: justify;"></p>
